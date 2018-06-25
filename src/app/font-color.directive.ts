@@ -1,12 +1,16 @@
-import { Directive, ElementRef, Renderer } from '@angular/core';
+import { Directive, ElementRef, Renderer, Renderer2 } from '@angular/core';
 
 @Directive({
-  selector: '[appFontColor]'
+  selector: '[FontColor]'
 })
 export class FontColorDirective {
 
-  constructor(x: ElementRef, renderer: Renderer) {
-    x.nativeElement.style.color = '#EEBA33';
+  constructor(private renderer: Renderer2, private elementRef: ElementRef) {
+    
+   }
+
+   ngOnInit(){
+     this.renderer.setStyle(this.elementRef.nativeElement,'color', '#EEBA33');
    }
 
 }
